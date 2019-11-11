@@ -1,7 +1,14 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:4000"
+  })
+);
+
 const db = {
   posts: [
     {
@@ -156,4 +163,4 @@ app.put("/api/posts/:id", (request, response) => {
   }
 });
 
-app.listen(8000);
+app.listen(process.env.PORT || 9000);
